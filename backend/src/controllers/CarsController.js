@@ -9,7 +9,7 @@ class CarsController {
     index = async (req, res) => {
 
         const cars = await this.dao.find();
-        return res.json({ return: true, data: cars })
+        return res.status(201).json(cars)
     }
 
     create = async (req, res) => {
