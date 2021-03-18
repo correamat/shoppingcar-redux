@@ -5,13 +5,16 @@ import ItemCart from '../../components/ItemCart';
 
 import { removeItem } from '../../store/ducks/cart'
 
+import { addMessage } from '../../store/ducks/layout';
+
 export default function Cart() {
 
 	const cart = useSelector(state => state.cart);
 	const dispatch = useDispatch();
 
-	function removeItemCart(id){
-		dispatch(removeItem(id));
+	function removeItemCart(car){
+		dispatch(removeItem(car._id));
+		dispatch(addMessage(`${car.name} foi removido com sucesso.`));
 	}
 
 	return (

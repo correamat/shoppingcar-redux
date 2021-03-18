@@ -1,5 +1,5 @@
 import api from '../../services/api';
-import { addCars, addCar } from '../ducks/cars';
+import { addCars } from '../ducks/cars';
 
 export const getAllCars = () => {
     return (dispatch) => {
