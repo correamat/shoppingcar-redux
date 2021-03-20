@@ -5,14 +5,15 @@ import { useSelector } from 'react-redux';
 import Add from './Add';
 import List from './List';
 import Cart from './Cart';
+import login from './Login';
 
 function PrivateRoute({ component: Compoment, ...rest }){
 
-	const { isAuthenticate } = useSelector(state => state.auth);
-
+	const { isAuthenticated } = useSelector(state => state.auth);
+	console.log(isAuthenticated);
 	return (
 		<Route {...rest} render={props => (
-			isAuthenticate ? (<Compoment {...props} />) : (<Redirect to={{pathname: '/', state: { from: props.location}}} />)
+			isAuthenticated ? (<Compoment {...props} />) : (<Redirect to={{pathname: '/', state: { from: props.location}}} />)
 		)}/>
 	)
 }
@@ -22,6 +23,7 @@ export default () => (
 		<Route path="/list" component={List} />
 		<PrivateRoute path="/add" component={Add} />
 		<Route path="/cart" component={Cart} />
+		<Route path="/login" component={login} />
 		<Redirect path="/" to="/list" />
 	</Switch>
 );
