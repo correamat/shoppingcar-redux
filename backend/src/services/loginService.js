@@ -1,17 +1,26 @@
 const jwt = require('jsonwebtoken');
+const bcryptjs = require('bcryptjs');
 
-const db = [{ username: 'admin', password: 'admin' }]
+const User = require('../models/User');
 
 const authenticate = async ({ username, password }) => {
-    const user = await db.find(user => user.password === password && user.username === username);
+    const user = await User.findOne({login: username, active: true}).select('+password');
     
-    if(user){
-        const token = await jwt.sign({ username }, 'olokinhomeu')
+    if(!user){
+        return false;
+    }
 
-        return {
-            token,
-            user
-        }
+    if(!await bcryptjs.compare(password, user.password)){
+        return false;
+    }
+
+    const token = await jwt.sign({ username }, 'olokinhomeu');
+
+    delete user.password;
+
+    return {
+        token,
+        user
     }
 }
 

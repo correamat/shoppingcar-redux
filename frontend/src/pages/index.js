@@ -10,7 +10,7 @@ import login from './Login';
 function PrivateRoute({ component: Compoment, ...rest }){
 
 	const { isAuthenticated } = useSelector(state => state.auth);
-	console.log(isAuthenticated);
+	
 	return (
 		<Route {...rest} render={props => (
 			isAuthenticated ? (<Compoment {...props} />) : (<Redirect to={{pathname: '/', state: { from: props.location}}} />)
