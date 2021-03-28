@@ -19,6 +19,14 @@ export const addCarFetch = car => {
     }
 }
 
+export const alterCarFetch = car => {
+    return (dispatch) => {
+        api.put(`/car/${car._id}`, car).then(res => {
+            dispatch(res.data)
+        }).catch(console.log)
+    }
+}
+
 export const authLogin = (user) => {
     return (dispatch) => {
         api.post('/login', user).then(res => {

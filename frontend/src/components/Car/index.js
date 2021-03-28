@@ -2,7 +2,7 @@ import React from 'react';
 
 import './styles.css';
 
-export default function Car({ car, addItemCart }) {
+export default function Car({ car, addItemCart, alterCarList }) {
 	return (
 		<div className="col-sm-3 mt-3 mb-3">
 			<div className="card">
@@ -11,6 +11,10 @@ export default function Car({ car, addItemCart }) {
 					<h5 className="card-title">{car.name}</h5>
 					<button className="btn btn-primary" onClick={() => addItemCart(car)}>
 						<i className="fa fa-cart-plus fa-2x" aria-hidden="true" />
+					</button>
+
+					<button className="btn btn-success ml-2" onClick={() => alterCarList(car)}>
+						<i className="fa fa-pencil fa-2x" aria-hidden="true" />
 					</button>
 				</div>
 			</div>

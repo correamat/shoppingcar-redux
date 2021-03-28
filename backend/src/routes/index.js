@@ -6,6 +6,7 @@ const UserController = require('../controllers/UserController');
 
 router.get('/cars', CarsController.index);
 router.post('/cars', CarsController.create);
+router.put('/car/:id', CarsController.update);
 
 router.get('/user', UserController.index);
 router.post('/user', UserController.create);
