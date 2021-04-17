@@ -21,7 +21,7 @@ export const addCarFetch = car => {
 
 export const alterCarFetch = car => {
     return (dispatch) => {
-        api.put(`/car/${car._id}`, car).then(res => {
+        api.put(`/car/${car.id}`, car).then(res => {
             dispatch(res.data)
         }).catch(console.log)
     }
